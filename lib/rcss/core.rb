@@ -59,17 +59,19 @@ module RCSS::Core
 
   class Parser
 
-    def initialize( classes, puts = $stdputs )
+    def initialize( classes, output = $stdout )
+      @output = output
+      @indention = Indention.new
+
       classes = [ classes ] unless classes.is_a? Array
       @classes = classes 
-      @indention = Indention.new
     end
 
     def parse
       @classes.each do |c|
         puts ".#{c.name} {"
         @indention.inc
-        c.content.each { |cont| puts "#{@indention}#{cont.identifier}: #{cont.value};" }
+        c.content.each { |cont| @output.puts "#{@indention}#{cont.identifier}: #{cont.value};" }
         @indention.dec
         puts "}"
       end

@@ -14,7 +14,7 @@ module RCSS::Core
     end
 
     def add_content c, value = nil
-      if c.is_a? RCSS::Content
+      if c.is_a? RCSS::Core::Content
         @content << c
 
       elsif c.is_a? String or c.is_a? Symbol

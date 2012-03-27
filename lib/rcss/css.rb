@@ -10,7 +10,7 @@ module RCSS
 
     def add_class( name )
       if name.is_a? String or name.is_a? Symbol
-        @classes << RCSS::Core::Class.new name.to_s
+        @classes << RCSS::Core::Class.new( name.to_s )
       else raise "Name is not a String or Symbol"
       end
     end
